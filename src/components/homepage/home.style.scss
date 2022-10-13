@@ -1,0 +1,62 @@
+.homepage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    height: 100vh;
+}
+.title{
+    font-size: 50px;
+    span{
+        font-weight: bold;
+        color: blueviolet;
+    }
+}
+.logo{
+    margin: 70px;
+    width: 100px;
+    height: 100px;
+    background-color: cyan;
+    border-radius: 50%;
+}
+.input-form{
+
+}
+.userId,.password{
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    padding:5px  10px;
+    width: 450px;
+    background-color: rgb(229, 229, 229);
+    border-radius: 10px;
+    box-shadow: .5px .5px 2px .3px rgb(117, 117, 117);
+
+
+}
+.user-icon,.pass-icon{
+    width: 40px;
+    height: 40px;
+    background: cyan;
+    margin: 5px 15px 5px 3px;
+}
+.admin,.password-inp{
+    font-size: 12px;     
+}
+.user-inp,.pass-inp {
+    input{
+        background: transparent;
+        border: none;
+        outline:none;
+        font-size: 15px;
+    }
+}
+.login-btn{
+    width: 400px;
+    background: blueviolet;
+    padding: 15px  ;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+}
