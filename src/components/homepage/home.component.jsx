@@ -14,7 +14,7 @@ const Home = () => {
                 <span> Farmer360</span>
             </div>
             <div className="logo">
-
+                <img className="mainLogo" src="Asset 2.png"></img>
             </div>
             <div className="input-form">
                 <div className="userId">
