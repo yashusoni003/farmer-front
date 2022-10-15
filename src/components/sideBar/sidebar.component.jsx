@@ -10,6 +10,7 @@ import Farmlocdetail from '../Farm LocationDetails/farmlocdetail.component';
 import Yeildinfo from '../Yeild Info/yeildinfo.component';
 import Bankdetails from '../BankDetails/bankdetails.component';
 import Credit from '../LandDetails/ladndetails.compo';
+import AuthFarmer from '../auth/auth';
 import './sidebar.style.scss'
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -101,7 +102,7 @@ export default function VerticalTabs() {
       </TabPanel>
       <TabPanel className="panel" value={value} index={1}>
         Communication Details
-        <CommDetails handleNavChange={handleChange}/>
+        <AuthFarmer handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={2}>
         Farm locations and details

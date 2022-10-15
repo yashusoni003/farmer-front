@@ -13,7 +13,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="regphase" element={<RegPhase />} />
         <Route path="regst" element={<VerticalTabs />} />
-        <Route path="auth" element={<AuthFarmer />} />
+        {/* <Route path="auth" element={<AuthFarmer />} /> */}
       {/* </Route> */}
     </Routes>
     {/* <Home/>
