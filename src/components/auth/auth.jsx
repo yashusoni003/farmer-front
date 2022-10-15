@@ -8,7 +8,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 
-const CommDetails = ({handleNavChange}) => {
+const AuthFarmer = () => {
 const [mobileNumber,setMobileNumber] = useState("");
 const [email,setEmail] = useState("");
 const [otp1,setOtp1] = useState("");
@@ -25,20 +25,20 @@ const firebaseConfig = {
     appId: "1:373619647485:web:863708ec6e9ced5260ef94"
   };
 
-//   useEffect(() => {
-//      console.log("render")
-//     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-//       "recaptcha-container",
-//       {
-//         size: "invisible",
-//         callback: function (response) {
-//           console.log("Captcha Resolved");
-//           this.onSignInSubmit();
-//         },
-//         defaultCountry: "IN",
-//       }
-//     );
-//   }, []);
+  useEffect(() => {
+     console.log("render")
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: function (response) {
+          console.log("Captcha Resolved");
+          this.onSignInSubmit();
+        },
+        defaultCountry: "IN",
+      }
+    );
+  }, []);
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -108,10 +108,10 @@ const firebaseConfig = {
       });
   };
 
-const HandlePrevClick = (e) =>{
+// const HandlePrevClick = (e) =>{
 
-     handleNavChange(e,0)
-}
+//      handleNavChange(e,0)
+// }
 
 const HandleNextclick = (e) =>{
 
@@ -155,8 +155,8 @@ mobileNumber,
          </div>
          <div style={{color:"red"}}>{err}</div>
          <div  className = "inp-part">
-         <Button variant="outlined" onClick={HandlePrevClick}>Previous</Button>
-         <Button className = "inp-btn" variant="outlined" onClick={HandleNextclick}>Next</Button>
+         <Button variant="outlined" onClick={()=>{}}>Previous</Button>
+         <Button className = "inp-btn" variant="outlined" onClick={()=>{}}>Next</Button>
          </div>
          
         
@@ -166,4 +166,4 @@ mobileNumber,
   )
 }
 
-export default CommDetails
+export default AuthFarmer;

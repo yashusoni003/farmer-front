@@ -19,6 +19,10 @@ const [cropType, setCropType] = useState("");
 const [harvestTech, setHarvestTech] = useState("");
 const [err,setErr]=useState("")
 
+const HandlePrevClick  = (e) =>{
+   handleNavChange(e,2)
+}
+
 const HandleNextclick = (e) => {
   
       if(!landTitle || !year || !cropName || !cropName || !quintity || !unit || !totalPrice || !cropType || !harvestTech){
@@ -39,20 +43,20 @@ const HandleNextclick = (e) => {
     <div className = "yeildInfo">
 
 
-      <div className='mar space-bw'>
-      <TextField id="outlined-basic" label="Land Title" variant="outlined" sx={{ minWidth:600 }} onChange = {
+      <div className='inp-part'>
+      <TextField id="outlined-basic" label="Land Title" variant="outlined" sx={{ minWidth:230}} onChange = {
       (e) => setLandTitle(e.target.value)}/>
-      <TextField id="outlined-basic" sx={{ minWidth:600 }} label="Year" variant="outlined" onChange = {
+      <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }} label="Year" variant="outlined" onChange = {
        (e) => {setYear(e.target.value)}}/>
       </div>
 
-<div className='space-bw'>
-<FormControl sx={{  minWidth: 190 }} size="large">
+<div className='inp-part'>
+<FormControl sx={{  minWidth: 230 }} size="large">
       <InputLabel id="demo-select-small">Crop Type</InputLabel>
       <Select
         labelId="demo-select-small"
         id="demo-select-small"
-        sx={{ minWidth:600 }}
+        sx={{ minWidth:230 }}
         value={cropType}
         label="Age"
         onChange={(e)=>{
@@ -62,25 +66,25 @@ const HandleNextclick = (e) => {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>Kharif</MenuItem>
-        <MenuItem value={20}>Ravi</MenuItem>
+        <MenuItem value={1}>Kharif</MenuItem>
+        <MenuItem value={2}>Ravi</MenuItem>
       </Select>
     </FormControl>
-    <TextField id="outlined-basic" sx={{ minWidth:600 }} label="CropName" variant="outlined" onChange = {
+    <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }} label="CropName" variant="outlined" onChange = {
     (e) => {setCropName(e.target.value)}}/>
 </div>
 
-<div className='space-bw mar'>
-<TextField id="outlined-basic" sx={{ minWidth:600 }} label="Quintity" variant="outlined" onChange = {
+<div className='inp-part'>
+<TextField id="outlined-basic" sx={{ minWidth:230 }} label="Quintity" variant="outlined" onChange = {
   (e) => setQuintity(e.target.value)}/>
-<TextField id="outlined-basic" label="Unit" variant="outlined" sx={{ minWidth:600 }} onChange = {
+<TextField className = "inp-btn"id="outlined-basic" label="Unit" variant="outlined" sx={{ minWidth:230 }} onChange = {
    (e) => {setUnit(e.target.value)}}/>
 </div>
 
-<div className='space-bw mar'>
-<TextField id="outlined-basic" sx={{ minWidth:600 }} label="Total Price" variant="outlined" onChange = {
+<div className='inp-part'>
+<TextField id="outlined-basic" sx={{ minWidth:230 }} label="Total Price" variant="outlined" onChange = {
   (e) => {setTotalprice(e.target.value)}}/>
-<FormControl sx={{ minWidth: 600}} size="large">
+<FormControl className = "inp-btn"sx={{ minWidth: 230}} size="large">
       <InputLabel id="demo-select-small">Harvest Tech</InputLabel>
       <Select
         labelId="demo-select-small"
@@ -100,14 +104,14 @@ const HandleNextclick = (e) => {
 </div>
 
  <div>
- <Button variant="outlined" sx={{ minWidth:600 }}>Upload Bill</Button>
+ <Button  variant="outlined" sx={{ minWidth:230 }}>Upload Bill</Button>
  </div>
 
  <div>
  <div style={{color:"red"}} >{err}</div>
- <div className='space-bw mar'>
- <Button variant="outlined" sx={{ minWidth:600 }} >Previous</Button>
- <Button variant="outlined" sx={{ minWidth:600 }} onClick={HandleNextclick}>Next</Button>
+ <div className='inp-part'>
+ <Button variant="outlined" sx={{ minWidth:230 }} onClick={HandlePrevClick}>Previous</Button>
+ <Button className = "inp-btn"variant="outlined" sx={{ minWidth:230 }} onClick={HandleNextclick}>Next</Button>
  </div>
  </div>
     </div>

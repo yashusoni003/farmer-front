@@ -4,7 +4,6 @@ import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import {data} from '../../data/data'
 import './farmLocation.style.scss'
-
 const Farmlocdetail = ({handleNavChange}) => {
 
 
@@ -15,6 +14,11 @@ const [surveyNum,setSurveyNum]  = useState("");
 const [upin,setUpin] = useState("");
 const [err,setErr]=useState("")
 
+
+const  HandlePrevClick = (e) =>{
+
+  handleNavChange(e,1)
+}
 
 const HandleNextClick = (e) =>{
   
@@ -55,7 +59,11 @@ const HandleNextClick = (e) =>{
       <div style={{color:"red"}}>{err}</div>
         
       </div>
-      <Button variant="outlined" onClick={HandleNextClick}>Next</Button>
+      <div className = "inp-part">
+      <Button variant="outlined" onClick={HandlePrevClick}>Previous</Button>
+      <Button  className = "inp-btn"variant="outlined" onClick={HandleNextClick}>Next</Button>
+      </div>
+      
 
     </div>
   )

@@ -2,6 +2,7 @@ import './App.css';
 import Home from './components/homepage/home.component';
 import RegPhase from './components/newreg/regPhase.component';
 import VerticalTabs from './components/sideBar/sidebar.component';
+import AuthFarmer from './components/auth/auth';
 import { Routes, Route, Outlet } from "react-router-dom";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="regphase" element={<RegPhase />} />
         <Route path="regst" element={<VerticalTabs />} />
+        <Route path="auth" element={<AuthFarmer />} />
       {/* </Route> */}
     </Routes>
     {/* <Home/>
@@ -24,3 +26,6 @@ function App() {
 }
 
 export default App;
+
+
+

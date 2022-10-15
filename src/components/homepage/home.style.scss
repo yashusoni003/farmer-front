@@ -5,7 +5,9 @@
     flex-flow: column;
     height: 100vh;
 }
-.title{
+.mainTitle{
+    position: absolute;
+    top:2%;
     font-size: 50px;
     span{
         font-weight: bold;
@@ -13,15 +15,18 @@
     }
 }
 .logo{
-    margin: 70px;
+    
+}
+.mainLogo{
     width: 100px;
     height: 100px;
-    background-color: cyan;
     border-radius: 50%;
 }
-
 .input-form{
 
+}
+.userId{
+    height: 50px;
 }
 .userId,.password{
     display: flex;
@@ -35,16 +40,32 @@
 
 
 }
-.user-icon,.pass-icon{
-    width: 40px;
-    height: 40px;
-    background: cyan;
+.user-logo{
+    width: 30px;
+    height: 30px;
     margin: 5px 15px 5px 3px;
 }
+.pass-logo{
+    width:30px;
+    height:30px;
+    margin: 5px 15px 5px 3px;
+}
+// .admin{
+//     position: absolute;
+//     top:43%;
+// }
+// .password{
+//     height: 50px;
+// }
+// .password-inp{
+//     position: absolute;
+//     top:58%;
+// }
 .admin,.password-inp{
     font-size: 12px;     
 }
 .user-inp,.pass-inp {
+    
     input{
         background: transparent;
         border: none;
@@ -53,11 +74,12 @@
     }
 }
 .login-btn{
-    width: 400px;
+    width: 300px;
     background: blueviolet;
-    padding: 15px  ;
+    padding: 15px;
     color: white;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
 }
+

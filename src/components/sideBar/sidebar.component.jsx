@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,8 +9,10 @@ import CommDetails from '../commDetails/commDetails.component';
 import Farmlocdetail from '../Farm LocationDetails/farmlocdetail.component';
 import Yeildinfo from '../Yeild Info/yeildinfo.component';
 import Bankdetails from '../BankDetails/bankdetails.component';
-
+import Credit from '../LandDetails/ladndetails.compo';
 import './sidebar.style.scss'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,6 +53,20 @@ export default function VerticalTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+//   useEffect(() => {
+//     console.log("render")
+//    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+//      "recaptcha-container",
+//      {
+//        size: "invisible",
+//        callback: function (response) {
+//          console.log("Captcha Resolved");
+//          this.onSignInSubmit();
+//        },
+//        defaultCountry: "IN",
+//      }
+//    );
+//  }, []);
 
   return (
     <>
@@ -80,9 +96,11 @@ export default function VerticalTabs() {
         <Tab label="Business" />
       </Tabs>
       <TabPanel className="panel" value={value} index={0}>
+        Personal Information 
        <PerInfo handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={1}>
+        Communication Details
         <CommDetails handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={2}>
@@ -100,6 +118,7 @@ export default function VerticalTabs() {
       </TabPanel>
       <TabPanel className="panel" value={value} index={5}>
         Credit
+        <Credit handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={6}>
         Insaurance
