@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './bankDetails.style.scss'
 import {data} from '../../data/data'
+import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc} from '../../Validation/validation.compo';
 
 import { postData } from '../../services/postData';
 
@@ -36,12 +37,18 @@ const handleSubmit=async(e)=>{
 
 
 const HandleNextclick = (e) => {
+console.log("click")
+  const valBankName = ValidateName(bankName);
+  const  valBranchName = ValidateName(branchName);
+  const  valdistrict =   ValidateName(district);
+  const valtaluko   =   ValidateName(taluko);
+  const valaccountNumber = ValidateAccountNumber(accountNumber);
+  const valifcs = ValidateIFSc(ifcs);
 
-     if(!bankName || !branchName || !district || !taluko || !accountNumber || !ifcs){
-            
-      setErr("somthing is missing!")
-      return;
-     }
+  if( !valBankName|| !valBranchName||  !valdistrict ||  !valtaluko   || !valaccountNumber  || !valifcs ){        
+    setErr("somthing is missing or Input is Invalid!")
+    return;
+    }
 
      const obj = {
       bankName,branchName,district,taluko,accountNumber,ifcs

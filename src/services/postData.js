@@ -1,5 +1,7 @@
 const {generateID} = require('./getFarmerId');
 
+
+
 export const postData = async (data) => {
   console.log(data);
   const {
@@ -10,6 +12,19 @@ export const postData = async (data) => {
     yeildInfo,
   } = data;
   const generatedId = await generateID("gujrat",personalInfo.distict);
+
+const myfarms= farmlocationDetails.map((farm)=>{
+return(
+  {
+    title: farm.title,
+    shape: farm.shape,
+    surveyNum: farm.surveyNum,
+    upin: farm.upin
+  })
+
+})
+
+
   const body = {
     farmId:generatedId,
     profilePic: "https://i.ibb.co/9vSkJnM/farmer-villager-india.jpg",
@@ -19,31 +34,18 @@ export const postData = async (data) => {
       middleName: personalInfo.middleName,
       lastName: personalInfo.lastName,
       adhar: personalInfo.adhar,
-      gender: "male",
+      gender: personalInfo.gender,
       district: personalInfo.district,
       taluko: personalInfo.taluko,
       village: personalInfo.village,
       homeAddrs: personalInfo.homeAddrs,
-      dob: "13/01/2002",
+      dob: personalInfo.dob,
     },
     comminfo: {
       mobileNumber: communicationDetails.mobileNumber,
       email: communicationDetails.email || "testin@test.com",
     },
-    farmInfo: [
-      {
-        title: "navi vadi",
-        shape: "https://i.ibb.co/GdKRHGT/asf2.png",
-        surveyNum: farmlocationDetails.surveyNum,
-        upin: farmlocationDetails.upin,
-      },
-      {
-        title: "juni vadi",
-        shape: "https://i.ibb.co/R7nh28N/asd.png",
-        surveyNum: farmlocationDetails.surveyNum,
-        upin: farmlocationDetails.upin,
-      },
-    ],
+    farmInfo: myfarms,
     yeildInfo: {
       landTitle: yeildInfo.landTitle,
       year: yeildInfo.year,
@@ -129,6 +131,32 @@ export const postData = async (data) => {
   }
 };
 
+// export const sendFarmerId=async(data)=>{
+//   // const vonage = new Vonage({
+//   //   apiKey: "cc5fcbaa",
+//   //   apiSecret: "6D2uufw4RkcVHO1y"
+//   // })  
+//   const generatedId = await generateID("gujrat",data.personalInfo.distict);
+
+//   const from = "Vonage APIs"
+// const to = `91${data.communicationDetails.mobileNumber}`
+// const text = `your farmerId is ${generatedId}`
+
+// // vonage.message.sendSms(from, to, text, (err, responseData) => {
+// //   if (err) {
+// //       console.log(err);
+// //   } else {
+// //       if(responseData.messages[0]['status'] === "0") {
+// //           console.log("Message sent successfully.");
+// //       } else {
+// //           console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+// //       }
+// //   }
+// // })
+
+
+// }
+
 // const body = {
 //     profilePic:"https://i.ibb.co/9vSkJnM/farmer-villager-india.jpg",
 //     userId:"8155977453",
@@ -179,3 +207,4 @@ export const postData = async (data) => {
 //   }
 
 // }
+

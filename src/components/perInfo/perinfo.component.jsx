@@ -41,11 +41,12 @@ const PerInfo = ({handleNavChange}) => {
       middleName,
       lastName,
       adhar,
+      gender,
       distict,
       taluko,
       village,
       homeAddrs,
-      dob
+      dob:`${dob.$D}/${dob.$M+1}/${dob.$y}`
      }
      data.personalInfo=obj;
      console.log(data);
@@ -79,15 +80,15 @@ const PerInfo = ({handleNavChange}) => {
         value={gender}
         label="Age"
         onChange={(e)=>{
-           setGender(e.target.value)
+           setGender(e.target.value);
         }}
       >
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>Male</MenuItem>
-        <MenuItem value={20}>Female</MenuItem>
-        <MenuItem value={30}>Others</MenuItem>
+        <MenuItem value={"male"}>Male</MenuItem>
+        <MenuItem value={"female"}>Female</MenuItem>
+        <MenuItem value={"others"}>Others</MenuItem>
       </Select>
     </FormControl>
     <FormControl sx={{ minWidth:400 }} size="large">

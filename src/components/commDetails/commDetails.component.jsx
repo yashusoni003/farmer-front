@@ -6,6 +6,8 @@ import './commdetails.style.scss'
 import {data} from '../../data/data'
 import firebase from "firebase/app";
 import "firebase/auth";
+import { sendFarmerId } from '../../services/postData';
+import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc} from '../../Validation/validation.compo';
 
 
 const CommDetails = ({handleNavChange}) => {
@@ -57,6 +59,12 @@ const firebaseConfig = {
   const loginSubmit = (e) => {
     e.preventDefault();
 
+    const valMobileNumber =  ValidateNumbers(mobileNumber)
+     if(!valMobileNumber && mobileNumber.length != 10){
+      setErr("somthing is missing or Input is Invalid!")
+      return;
+     }
+
     let phone_number = "+91" + e.target.phone.value;
     const appVerifier = window.recaptchaVerifier;
 
@@ -87,7 +95,7 @@ const firebaseConfig = {
       .then((confirmationResult) => {
         console.log(confirmationResult);
         console.log("success");
-        window.open("/", "_self");
+        //endFarmerId(data);
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
@@ -114,15 +122,18 @@ const HandlePrevClick = (e) =>{
 }
 
 const HandleNextclick = (e) =>{
-
-     if(!mobileNumber){
-      setErr("somthing is missing!")
+  const valMobileNumber =  ValidateNumbers(mobileNumber)
+     if(!valMobileNumber && mobileNumber.length != 10){
+      setErr("somthing is missing or Input is Invalid!")
       return;
      }
      const obj = {
-mobileNumber,
+mobileNumber,email
      }
      data.communicationDetails=obj;
+     console.log(data)
+
+
      console.log(data)
      handleNavChange(e,2);
 

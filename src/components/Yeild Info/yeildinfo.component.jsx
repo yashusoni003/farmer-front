@@ -66,8 +66,8 @@ const HandleNextclick = (e) => {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={1}>Kharif</MenuItem>
-        <MenuItem value={2}>Ravi</MenuItem>
+        <MenuItem value={"Kharif"}>Kharif</MenuItem>
+        <MenuItem value={"Ravi"}>Ravi</MenuItem>
       </Select>
     </FormControl>
     <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }} label="CropName" variant="outlined" onChange = {
@@ -103,9 +103,7 @@ const HandleNextclick = (e) => {
     </FormControl>
 </div>
 
- <div>
- <Button  variant="outlined" sx={{ minWidth:230 }}>Upload Bill</Button>
- </div>
+
 
  <div>
  <div style={{color:"red"}} >{err}</div>

@@ -31,6 +31,7 @@ const firebaseConfig = {
 };
 
 useEffect(() => {
+  if(!window.recaptchaVerifier){
   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
     "recaptcha-container",
     {
@@ -41,7 +42,7 @@ useEffect(() => {
       },
       defaultCountry: "IN",
     }
-  );
+  );}
 }, []);
 
 
