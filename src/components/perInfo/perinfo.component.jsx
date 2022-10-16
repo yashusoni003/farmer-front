@@ -15,6 +15,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import Button from '@mui/material/Button';
 import {data} from '../../data/data'
+import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum} from '../../Validation/validation.compo';
 import './perInfo.style.scss'
 
 
@@ -32,10 +33,20 @@ const PerInfo = ({handleNavChange}) => {
     const [err,setErr]=useState("")
 
     const HandleNextClick=(e)=>{
-     if(!firstName || !lastName || !middleName || !adhar || !gender || !distict || !taluko || !village || !homeAddrs || !dob ){
-      setErr("something is missing");
-      return;
-     }
+      const valfirstname = ValidateName(firstName)
+      const vallastname = ValidateName(lastName)
+      const valmiddleName = ValidateName(middleName)
+      const valadhar =    ValidateNumbers(adhar) || adhar.length != 12
+      const valgender = ValidateName(gender)
+      const valdistict = ValidateName(distict)
+      const valtaluko = ValidateName(taluko)
+      const valvillage = ValidateName(village)
+
+  if(valfirstname || vallastname || valmiddleName || valadhar || valgender || valdistict || valtaluko || valvillage || !homeAddrs){
+   setErr("somthing is missing or Input is Invalid!");
+   return;
+  }
+
      const obj = {
       firstName,
       middleName,

@@ -11,9 +11,10 @@ import Yeildinfo from '../Yeild Info/yeildinfo.component';
 import Bankdetails from '../BankDetails/bankdetails.component';
 import Credit from '../LandDetails/ladndetails.compo';
 import AuthFarmer from '../auth/auth';
+import InsuranceInfo from '../InsuaranceDetails/insurance.compo';
+import Quailfication from '../QualiFicationDetails/qualification.compo';
 import './sidebar.style.scss'
-import firebase from "firebase/app";
-import "firebase/auth";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,7 +55,7 @@ export default function VerticalTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-//   useEffect(() => {
+
 //     console.log("render")
 //    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
 //      "recaptcha-container",
@@ -123,9 +124,11 @@ export default function VerticalTabs() {
       </TabPanel>
       <TabPanel className="panel" value={value} index={6}>
         Insaurance
+        <InsuranceInfo handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={7}>
         Quailfication
+        < Quailfication handleNavChange={handleChange}/>
       </TabPanel>
       <TabPanel className="panel" value={value} index={8}>
         Business

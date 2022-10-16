@@ -15,7 +15,7 @@ export const generateID=async(state="gujrat",district="rajkot")=>{
     console.log(state,district);
   let farmerRegno=1;
     try {
-        const nooffarmers = await fetch(`http://localhost:8000/getregno/${state}/${district}`);
+        const nooffarmers = await fetch(`https://hack-roso.onrender.com/getregno/${state}/${district}`);
          farmerRegno = await nooffarmers.json();
         console.log(farmerRegno);
       } catch (err) {

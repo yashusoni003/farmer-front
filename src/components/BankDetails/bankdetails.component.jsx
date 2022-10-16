@@ -18,7 +18,7 @@ const [branchName ,setBranchName]  =  useState("");
 const [district ,setDistrict]  =  useState("");    
 const [taluko,setTaluko]  =  useState("");    
 const [accountNumber ,setAccountNumber]  =  useState("");    
-const [ifcs ,setIfsc]  =  useState("");    
+const [ifsc ,setIfsc]  =  useState("");    
 const[err ,setErr] = useState("");
 
 
@@ -28,7 +28,7 @@ const HandlePrevclick = (e) => {
 
 const handleSubmit=async(e)=>{
   const obj = {
-    bankName,branchName,district,taluko,accountNumber,ifcs
+    bankName,branchName,district,taluko,accountNumber,ifsc
    }
    data.bankdetails = obj;
    console.log(data);
@@ -43,15 +43,15 @@ console.log("click")
   const  valdistrict =   ValidateName(district);
   const valtaluko   =   ValidateName(taluko);
   const valaccountNumber = ValidateAccountNumber(accountNumber);
-  const valifcs = ValidateIFSc(ifcs);
+  const valifsc = ValidateIFSc(ifsc);
 
-  if( !valBankName|| !valBranchName||  !valdistrict ||  !valtaluko   || !valaccountNumber  || !valifcs ){        
-    setErr("somthing is missing or Input is Invalid!")
-    return;
-    }
+    if( valBankName|| valBranchName||  valdistrict ||  valtaluko   || valaccountNumber  || valifsc ){        
+      setErr("somthing is missing or Input is Invalid!")
+      return;
+      }
 
      const obj = {
-      bankName,branchName,district,taluko,accountNumber,ifcs
+      bankName,branchName,district,taluko,accountNumber,ifsc
      }
      data.bankdetails = obj;
      console.log(data);
@@ -92,7 +92,7 @@ console.log("click")
 <div className='inp-part'>
     <Button variant="outlined" sx={{ minWidth:230 }} onClick={HandlePrevclick}>Previous</Button>
    <Button className = "inp-btn"variant="outlined" sx={{ minWidth:230 }} onClick={HandleNextclick}>Next</Button>
-   <Button className = "inp-btn"variant="outlined" sx={{ minWidth:230 }} onClick={handleSubmit}>submit</Button>
+   
 </div>
     </div>
          </div>

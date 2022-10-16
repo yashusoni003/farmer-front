@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {data} from '../../data/data'
 import './yeildInfo.style.scss'
+import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum} from '../../Validation/validation.compo';
  const Yeildinfo = ({handleNavChange}) => {
 
 const [landTitle,setLandTitle] = useState("")
@@ -24,11 +25,20 @@ const HandlePrevClick  = (e) =>{
 }
 
 const HandleNextclick = (e) => {
+  const vallandTitle = ValidateName(landTitle)
+  const valyear = ValidateNumbers(year)
+  const valcropname = ValidateName(cropName)
+  const valquintity = ValidateName(quintity)
+  const valunit = ValidateNumbers(unit)
+  const valtotalPrice= ValidateNumbers(totalPrice)
+  // const valcroptype = ValidateName(cropType)
+  // const valharvestTech = ValidateName(harvestTech)
   
-      if(!landTitle || !year || !cropName || !cropName || !quintity || !unit || !totalPrice || !cropType || !harvestTech){
-         setErr("somthing is missing!")
+      if(vallandTitle || valyear || valcropname || valquintity || valunit || valtotalPrice){
+         setErr("somthing is missing or Input is Invalid!")
          return;
       }
+     
       const obj = {
         landTitle,year,cropName,quintity,unit,totalPrice,cropType,harvestTech
       }

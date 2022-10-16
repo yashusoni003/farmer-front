@@ -30,7 +30,23 @@ const firebaseConfig = {
   appId: "1:552503882953:web:b22aa6e446f4ad9a580918"
 };
 
-useEffect(() => {
+// useEffect(() => {
+//   if(!window.recaptchaVerifier){
+//   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+//     "recaptcha-container",
+//     {
+//       size: "invisible",
+//       callback: function (response) {
+//         console.log("Captcha Resolved");
+//         this.onSignInSubmit();
+//       },
+//       defaultCountry: "IN",
+//     }
+//   );}
+// }, []);
+
+
+setTimeout(function() {
   if(!window.recaptchaVerifier){
   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
     "recaptcha-container",
@@ -42,26 +58,11 @@ useEffect(() => {
       },
       defaultCountry: "IN",
     }
-  );}
-}, []);
+  );
+  }
 
 
-// setTimeout(function() {
-  // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-  //   "recaptcha-container",
-  //   {
-  //     size: "invisible",
-  //     callback: function (response) {
-  //       console.log("Captcha Resolved");
-  //       this.onSignInSubmit();
-  //     },
-  //     defaultCountry: "IN",
-  //   }
-  // );
-
-
-
-// },2000);
+},2000);
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -177,7 +178,7 @@ mobileNumber,
          <div className='inp-part'>
          <TextField id="outlined-basic" sx={{ minWidth:230 }} label="mobile number" variant="outlined" onChange = {
           (e)=>{ setMobileNumber(e.target.value)}}/>
-         <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }}  label="Email" variant="outlined" onChange =
+         <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }}  label="Email (optional)" variant="outlined" onChange =
          {(e) =>{ setEmail(e.target.value)}}/>
          </div>
 

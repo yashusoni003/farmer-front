@@ -9,33 +9,62 @@ export const postData = async (data) => {
     communicationDetails,
     farmlocationDetails,
     personalInfo,
-    yeildInfo,
+    yeildInfo,credit,InsuranceInfo,QualificationDetails
   } = data;
   const generatedId = await generateID("gujrat",personalInfo.distict);
 
 const myfarms= farmlocationDetails.map((farm)=>{
 return(
   {
-    title: farm.title,
+    title: farm.landTitle,
     shape: farm.shape,
-    surveyNum: farm.surveyNum,
-    upin: farm.upin
+    surveyNum: farm.newSurveyNumber,
+    upin: farm.UPIN
   })
-
 })
+console.log(myfarms);
+
+
 
 
   const body = {
     farmId:generatedId,
     profilePic: "https://i.ibb.co/9vSkJnM/farmer-villager-india.jpg",
     userId: communicationDetails.mobileNumber,
+    Qualificationinfo:{
+      otherQualification:QualificationDetails.otherQualification,
+tenthPer:QualificationDetails.tenthPer,
+twelvePer:QualificationDetails.twelvePer
+    },
+    creditinfo:{
+      LoanType:credit.LoanType,
+      accountNumber:credit.accountNumber,
+      bankName:credit.bankName,
+      ifsc:credit.ifsc,
+      landTitle:credit.landTitle,
+      loanSize:credit.loanSize,
+      perpose:credit.perpose,
+      upin:credit.upin,
+    },
+    insuranceInfo:{
+applieddate:InsuranceInfo.applieddate,
+area:InsuranceInfo.area,
+certificateNumber:InsuranceInfo.certificateNumber,
+companyName:InsuranceInfo.companyName,
+cropName:InsuranceInfo.cropName,
+cropSeason:InsuranceInfo.cropSeason,
+fieldName:InsuranceInfo.fieldName,
+insuranceType:InsuranceInfo.insuranceType,
+receiptNumber:InsuranceInfo.receiptNumber,
+upin:InsuranceInfo.upin
+    },
     perinfo: {
       firstName: personalInfo.firstName,
       middleName: personalInfo.middleName,
       lastName: personalInfo.lastName,
       adhar: personalInfo.adhar,
       gender: personalInfo.gender,
-      district: personalInfo.district,
+      district: personalInfo.distict,
       taluko: personalInfo.taluko,
       village: personalInfo.village,
       homeAddrs: personalInfo.homeAddrs,

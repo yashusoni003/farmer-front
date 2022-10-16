@@ -141,6 +141,7 @@ mobileNumber,email
 
   return (
     <div className='commdetails'>
+      
          <div className='inp-part'>
          <TextField id="outlined-basic" sx={{ minWidth:230 }} label="mobile number" variant="outlined" onChange = {
           (e)=>{ setMobileNumber(e.target.value)}}/>

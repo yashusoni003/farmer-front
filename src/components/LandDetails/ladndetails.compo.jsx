@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {data} from '../../data/data'
 import './landDetails.style.scss'
-
+import { ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc } from '../../Validation/validation.compo';
 
 const LandDetail = ({handleNavChange}) => {
 
@@ -27,7 +27,20 @@ const LandDetail = ({handleNavChange}) => {
     }
     
     const HandleNextClick = (e) => {
+      const vallandTitle = ValidateName(landTitle)
+      const valupin = ValidateNumbers(upin)
+      // const valloanType = ValidateName(LoanType)
+      const valbankname = ValidateName(bankName)
+      const valifsc = ValidateIFSc(ifsc)
+      const valaccountNumber = ValidateAccountNumber(accountNumber)
+      const valloansize = ValidateNumbers(loanSize)
+      const valperpose  =  ValidateName(perpose)
       
+      
+         if(vallandTitle || valupin  || valbankname || valifsc || valaccountNumber || valloansize || valperpose){
+          setErr("somthing is missing or Input is Invalid!")
+          return;
+         }
          if(!landTitle || !upin || !LoanType || !bankName || !ifsc || !accountNumber || !loanSize || !perpose){
           setErr("somthing is missing!")
           return;
@@ -43,6 +56,7 @@ const LandDetail = ({handleNavChange}) => {
         perpose
        }
        data.credit = obj;
+       console.log(data);
          handleNavChange(e,6);
     }
     
@@ -77,15 +91,15 @@ const LandDetail = ({handleNavChange}) => {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={1}>crop Loan</MenuItem>
-        <MenuItem value={2}>Agriculture term Loan</MenuItem>
-        <MenuItem value={3}>Solar pump set Loan</MenuItem>
-        <MenuItem value={4}>Loan for Aplied Agricultural Activities</MenuItem>
-        <MenuItem value={5}>Farm Mechanisation Loan</MenuItem>
-        <MenuItem value={6}>Agricultural Gold Loan</MenuItem>
-        <MenuItem value={7}>Forestry Loan</MenuItem>
-        <MenuItem value={8}>Horficulture Loan</MenuItem>
-        <MenuItem value={9}>other types of Loan</MenuItem>
+        <MenuItem value={"crop Loan"}>crop Loan</MenuItem>
+        <MenuItem value={"Agriculture term Loan"}>Agriculture term Loan</MenuItem>
+        <MenuItem value={"Solar pump set Loan"}>Solar pump set Loan</MenuItem>
+        <MenuItem value={"Loan for Aplied Agricultural Activities"}>Loan for Aplied Agricultural Activities</MenuItem>
+        <MenuItem value={"Farm Mechanisation Loan"}>Farm Mechanisation Loan</MenuItem>
+        <MenuItem value={"Agricultural Gold Loan"}>Agricultural Gold Loan</MenuItem>
+        <MenuItem value={"Forestry Loan"}>Forestry Loan</MenuItem>
+        <MenuItem value={"Horficulture Loan"}>Horficulture Loan</MenuItem>
+        <MenuItem value={"other types of Loan"}>other types of Loan</MenuItem>
       </Select>
     </FormControl>
 
@@ -103,9 +117,9 @@ const LandDetail = ({handleNavChange}) => {
                </div>
           
             <div className = "inp-part">
-            <TextField id="outlined-basic" label="loanSize" variant="outlined" onChange = {
+            <TextField id="outlined-basic" label="loan Amount" variant="outlined" onChange = {
             (e) => {setLoanSize(e.target.value)}}/>
-            <TextField className = "inp-btn" id="outlined-basic" label="perpose" variant="outlined" onChange = {
+            <TextField className = "inp-btn" id="outlined-basic" label="purpose" variant="outlined" onChange = {
             (e) => {setPerPose(e.target.value)}}/>
             </div>
             

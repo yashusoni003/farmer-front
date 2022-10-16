@@ -4,6 +4,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import { data } from '../../data/data'
 import './farmLocation.style.scss'
+import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc} from '../../Validation/validation.compo';
+
 
 
 export const FieldBox = ({ farm }) => {
@@ -51,10 +53,19 @@ const Farmlocdetail = ({ handleNavChange }) => {
 
   const HandleNextClick = (e) => {
 
-    // if (!district || !taluka || !village || !surveyNum) {
-    //   setErr("somthing is missing!")
-    //   return;
-    // }
+
+    const valdistict = ValidateName(district)
+    const valtaluko = ValidateName(taluka)
+    const valvillage = ValidateName(village)
+    const valsurveyNum = ValidateSurveyNum(surveyNum)
+        console.log(valdistict)
+        console.log(valtaluko)
+        console.log(valvillage)
+        console.log(valsurveyNum)
+    if (valdistict || valtaluko || valvillage || valsurveyNum) {
+      setErr("somthing is missing!")
+      return;
+    }
     const obj = myfarm;
     data.farmlocationDetails = obj;
     // const myfarms= obj.map((farm)=>{
@@ -88,7 +99,7 @@ const Farmlocdetail = ({ handleNavChange }) => {
     if (!district || !taluka || !village || !surveyNum)  return;
     const body={district,taluka,village,newSurveyNumber:surveyNum};
     try {
-      const response = await fetch(`http://localhost:8000/getlandbyname/`,{
+      const response = await fetch(`https://hack-roso.onrender.com/getlandbyname/`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
