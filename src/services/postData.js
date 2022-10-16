@@ -31,11 +31,6 @@ console.log(myfarms);
     farmId:generatedId,
     profilePic: "https://i.ibb.co/9vSkJnM/farmer-villager-india.jpg",
     userId: communicationDetails.mobileNumber,
-    Qualificationinfo:{
-      otherQualification:QualificationDetails.otherQualification,
-tenthPer:QualificationDetails.tenthPer,
-twelvePer:QualificationDetails.twelvePer
-    },
     creditinfo:{
       LoanType:credit.LoanType,
       accountNumber:credit.accountNumber,

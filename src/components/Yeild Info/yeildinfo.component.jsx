@@ -25,16 +25,17 @@ const HandlePrevClick  = (e) =>{
 }
 
 const HandleNextclick = (e) => {
+  console.log(landTitle);
   const vallandTitle = ValidateName(landTitle)
   const valyear = ValidateNumbers(year)
   const valcropname = ValidateName(cropName)
-  const valquintity = ValidateName(quintity)
-  const valunit = ValidateNumbers(unit)
+  const valquintity = ValidateNumbers(quintity)
+  // const valunit = ValidateName(unit)
   const valtotalPrice= ValidateNumbers(totalPrice)
   // const valcroptype = ValidateName(cropType)
   // const valharvestTech = ValidateName(harvestTech)
   
-      if(vallandTitle || valyear || valcropname || valquintity || valunit || valtotalPrice){
+      if(vallandTitle || valyear || valcropname || valquintity ||  valtotalPrice){
          setErr("somthing is missing or Input is Invalid!")
          return;
       }
@@ -44,18 +45,41 @@ const HandleNextclick = (e) => {
       }
       data.yeildInfo = obj;
 
-
+   console.log(data);
       handleNavChange(e,4);
 }
 
 
   return (
     <div className = "yeildInfo">
-
-
       <div className='inp-part'>
-      <TextField id="outlined-basic" label="Land Title" variant="outlined" sx={{ minWidth:230}} onChange = {
-      (e) => setLandTitle(e.target.value)}/>
+      <FormControl sx={{  minWidth: 230 }} size="large">
+      <InputLabel id="demo-select-small">land Title</InputLabel>
+      <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        sx={{ minWidth:230 }}
+        value={landTitle}
+        label="Age"
+        onChange={(e)=>{
+          setLandTitle(e.target.value);
+        }}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        {
+          
+         data && data.farmlocationDetails&&
+          data.farmlocationDetails.map((farm)=>{ return(
+            <MenuItem value={farm.landTitle}>{farm.landTitle}</MenuItem>)
+          })
+        }
+        {/* <MenuItem value={"Ravi"}>Ravi</MenuItem> */}
+      </Select>
+    </FormControl>
+      {/* <TextField id="outlined-basic" label="Land Title" variant="outlined" sx={{ minWidth:230}} onChange = {
+      (e) => setLandTitle(e.target.value)}/> */}
       <TextField className = "inp-btn"id="outlined-basic" sx={{ minWidth:230 }} label="Year" variant="outlined" onChange = {
        (e) => {setYear(e.target.value)}}/>
       </div>
@@ -87,9 +111,30 @@ const HandleNextclick = (e) => {
 <div className='inp-part'>
 <TextField id="outlined-basic" sx={{ minWidth:230 }} label="Quintity" variant="outlined" onChange = {
   (e) => setQuintity(e.target.value)}/>
-<TextField className = "inp-btn"id="outlined-basic" label="Unit" variant="outlined" sx={{ minWidth:230 }} onChange = {
-   (e) => {setUnit(e.target.value)}}/>
+{/* <TextField className = "inp-btn"id="outlined-basic" label="Unit" variant="outlined" sx={{ minWidth:230 }} onChange = {
+   (e) => {setUnit(e.target.value)}}/> */}
+
+<FormControl className = "inp-btn"sx={{ minWidth: 230}} size="large">
+      <InputLabel id="demo-select-small">unit</InputLabel>
+      <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        value={unit}
+        label="Age"
+        onChange={(e)=>{
+          setUnit(e.target.value)
+        }}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={"KG"}>KG</MenuItem>
+        <MenuItem value={"20KG"}>20KG</MenuItem>
+        <MenuItem value={"100KG"}>100KG</MenuItem>
+      </Select>
+    </FormControl>
 </div>
+
 
 <div className='inp-part'>
 <TextField id="outlined-basic" sx={{ minWidth:230 }} label="Total Price" variant="outlined" onChange = {
@@ -108,7 +153,7 @@ const HandleNextclick = (e) => {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>Machine Thresher</MenuItem>
+        <MenuItem value={"Machine Thresher"}>Machine Thresher</MenuItem>
       </Select>
     </FormControl>
 </div>

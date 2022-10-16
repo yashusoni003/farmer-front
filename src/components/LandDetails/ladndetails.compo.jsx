@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import {data} from '../../data/data'
 import './landDetails.style.scss'
 import { ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc } from '../../Validation/validation.compo';
+import { useEffect } from 'react';
 
 const LandDetail = ({handleNavChange}) => {
 
@@ -59,20 +60,50 @@ const LandDetail = ({handleNavChange}) => {
        console.log(data);
          handleNavChange(e,6);
     }
+
+
+//   const gatBy=(er)=>{
+//       const arr = data.farmlocationDetails.filter((item)=>{item.landTitle == er });
+// console.log(arr);
+//     }
     
     
       return (
         <div className='LandDeatils'>
-    
-          
-
             <div className = "inp-part">
                 
-                <TextField  id="outlined-basic" label="landTitle" variant="outlined"  onChange ={
-             (e) => {setlandTitle(e.target.value)}}/>
+                {/* <TextField  id="outlined-basic" label="landTitle" variant="outlined"  onChange ={
+             (e) => {setlandTitle(e.target.value)}}/> */}
+
+<FormControl sx={{  minWidth: 230 }} size="large">
+      <InputLabel id="demo-select-small">land Title</InputLabel>
+      <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        sx={{ minWidth:230 }}
+        value={landTitle}
+        label="Age"
+        onChange={(e)=>{
+          setlandTitle(e.target.value);
+          
+        }}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        {
+          
+         data && data.farmlocationDetails&&
+          data.farmlocationDetails.map((farm)=>{ return(
+            <MenuItem value={farm.landTitle}>{farm.landTitle}</MenuItem>)
+          })
+        }
+        {/* <MenuItem value={"Ravi"}>Ravi</MenuItem> */}
+      </Select>
+    </FormControl>
             
              <TextField className = "inp-btn" id="outlined-basic" label="upin" variant="outlined" onChange = {
-              (e) => (setUpin(e.target.value))}/>
+              (e) => (setUpin(e.target.value))}  />
             </div>
             
                <div class = "inp-part">

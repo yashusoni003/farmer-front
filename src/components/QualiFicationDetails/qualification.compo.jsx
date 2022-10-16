@@ -8,14 +8,11 @@ import Select from '@mui/material/Select';
 import './qualification.style.scss'
 import {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc} from '../../Validation/validation.compo';
 import {data} from '../../data/data'
-import { postData } from '../../services/postData';
 
 const Quailfication = ({handleNavChange}) => {
 
 
-    const [tenthPer,settenthPer] = useState("");
-    const [twelvePer,setTwelvePer] = useState("");
-    const [otherQualification,setotherQualification] = useState("");
+    const[qualification,setQualification] = useState("");
     const [err,setErr] = useState("");
     
     
@@ -23,42 +20,20 @@ const Quailfication = ({handleNavChange}) => {
     
       handleNavChange(e,6)
     }
-    const  HandleSubmitClick = async(e) =>{
-      const obj = {
-        tenthPer,
-        twelvePer,
-        otherQualification
-       }
-       data.QualificationDetails = obj;
-      await postData(data);
-      //handleNavChange(e,6)
-    }
-
-
     
     const HandleNextClick = (e) =>{
 
 
-        if(!tenthPer && !twelvePer && !otherQualification)
-        handleNavChange(e,8)
+          if(qualification == 0)
+            handleNavChange(e,8)
 
-        const valtenthPer = ValidateNumbers(tenthPer)
-        const valtwelvePer = ValidateNumbers(twelvePer)
-        const valotherQualification = ValidateName(otherQualification)
 
-        if(!valtenthPer || !valtwelvePer || !valotherQualification){
-            setErr("Somthing is missing or input is Invalid!")
-            return;
-        }
+       
                  
        const obj = {
-        tenthPer,
-        twelvePer,
-        otherQualification
+        qualification,
        }
        data.QualificationDetails = obj;
-       console.log(data);
-
          handleNavChange(e,8);
     }
     
@@ -67,29 +42,36 @@ const Quailfication = ({handleNavChange}) => {
         <div className='Qualific'>
     
                 <div className = "inp-part">
-                <TextField id="outlined-basic" label="10th Percentage" variant="outlined"  onChange ={
-             (e) => {settenthPer(e.target.value)}}/>
-                </div>
-             <div className = "inp-part">
-             <TextField id="outlined-basic" label="12th Percentage" variant="outlined" onChange = {
-             (e) => (setTwelvePer(e.target.value))}/>
-             </div>
-            
-            <div className = "inp-part">
-            <TextField id="outlined-basic" label="Other Qualifications" variant="outlined" onChange = {
-             (e) => {setotherQualification(e.target.value)}}/>
-            </div>
-             
-
+                <FormControl sx={{  minWidth: 230 }} size="large">
+      <InputLabel id="demo-select-small">Qulifications</InputLabel>
+      <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        sx={{ minWidth:230 }}
+        value={qualification}
+        label="Qulifications"
+        onChange={(e)=>{
+            setQualification(e.target.value);
+        }}
+      >
+        <MenuItem value="0">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={1}>7th Pass Or Less</MenuItem>
+        <MenuItem value={2}>Between 8th and 9th Standard</MenuItem>
+        <MenuItem value={3}>10th Pass And Above</MenuItem>
+        <MenuItem value={4}>Graduate And Above</MenuItem>
+      </Select>
+    </FormControl>
     
-          <div style={{color:"red"}}>{err}</div>
+                </div>
+
             
           
           <div className = "inp-part">
           <Button variant="outlined" onClick={HandlePrevClick}>Previous</Button>
           <Button  className = "inp-btn"variant="outlined" onClick={HandleNextClick}>Next</Button>
           </div>
-          <Button className = "inp-btn"variant="outlined" sx={{ minWidth:230 }} onClick={HandleSubmitClick}>submit</Button>
           
     
         </div>

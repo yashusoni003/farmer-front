@@ -13,6 +13,7 @@ import Credit from '../LandDetails/ladndetails.compo';
 import AuthFarmer from '../auth/auth';
 import InsuranceInfo from '../InsuaranceDetails/insurance.compo';
 import Quailfication from '../QualiFicationDetails/qualification.compo';
+import BusinessLinks from '../business/business'
 import './sidebar.style.scss'
 
 
@@ -132,6 +133,7 @@ export default function VerticalTabs() {
       </TabPanel>
       <TabPanel className="panel" value={value} index={8}>
         Business
+        <BusinessLinks handleNavChange={handleChange}/>
       </TabPanel>
     </Box>
     </>

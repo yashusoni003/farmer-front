@@ -68,6 +68,7 @@ const Farmlocdetail = ({ handleNavChange }) => {
     }
     const obj = myfarm;
     data.farmlocationDetails = obj;
+    console.log(data);
     // const myfarms= obj.map((farm)=>{
     //   return(
     //     {
