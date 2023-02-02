@@ -1,17 +1,20 @@
 .homepage{
     display: flex;
+    background-color: #1c3b23;
     justify-content: center;
     align-items: center;
     flex-flow: column;
     height: 100vh;
 }
 .mainTitle{
-    position: absolute;
+    // position: absolute;
     top:2%;
     font-size: 50px;
+    font-weight: 700;
+    color: white;
     span{
         font-weight: bold;
-        color: blueviolet;
+        color: #3df871;
     }
 }
 .logo{
@@ -40,6 +43,24 @@
 
 
 }
+.userId{
+
+    background: transparent;
+    border: 2px solid white;
+
+    height: 4rem;
+    .user-icon{
+        margin-right: 3%;
+    }
+}
+.password{
+
+    background: transparent;
+    border: 2px solid white;
+    .pass-icon{
+        margin-right: 3%;
+    }
+}
 .user-logo{
     width: 30px;
     height: 30px;
@@ -62,24 +83,46 @@
 //     top:58%;
 // }
 .admin,.password-inp{
-    font-size: 12px;     
+    font-size: 1rem;
+    color: white;     
 }
 .user-inp,.pass-inp {
-    
+
+    display: flex;
+    flex-direction: column;
+   
     input{
         background: transparent;
+        color: white;
+        width: 24rem;
+        height: 2rem;
         border: none;
         outline:none;
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 .login-btn{
-    width: 300px;
-    background: blueviolet;
+    width: 20rem;
+    font-weight: 700;
+    background: #72d98f;
+    font-family: 'Ubuntu',sans-serif;
     padding: 15px;
     color: white;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
+    font-size: 20px;
+    transition: all 0.5s;
+
+    &:hover{
+
+        color: #72d98f;
+        border-color: 2px solid white;
+        background: transparent;
+        letter-spacing: 2px;
+        font-weight: 500;
+
+
+    }
 }
 

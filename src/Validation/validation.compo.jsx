@@ -43,6 +43,12 @@ const ValidateIFSc = (name)=>{
   return !bool1;
 }
 
+const ValidateDate = (value)=>{
+
+    let date = new Date(value);
+    
+      return isNaN(date.getTime())  //return true if date is not valid
+}
 
 
-export {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc};
+export {ValidateName,ValidateAccountNumber,ValidateNumbers,ValidateUpin,ValidateSurveyNum,ValidateIFSc,ValidateDate};

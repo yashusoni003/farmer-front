@@ -1,0 +1,118 @@
+
+.searchFarmer{
+    display: flex;
+    height: 10rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 5rem 0rem 5rem;
+    background-color: rgb(10 51 10);
+    
+
+    label{
+
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+        color: grey;
+        margin-bottom: 1%;
+    }
+
+    & > input:nth-child(2){
+
+        margin-bottom: 1%;
+        width: 24rem;
+        border-color: #23de2f;
+        border-radius: 6px;
+        outline: none;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    & > button:nth-child(3){
+
+        width: 5rem;
+        height: 32px;
+        border: 2px solid #23de2f;
+        font-family: 'Ubuntu', sans-serif;
+       
+    }
+
+}
+
+.firstNameContainer{
+    display: block;
+}
+
+.farmerProfilecontainer{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #EBFBF3;
+}
+
+.FarmerIdContainer{
+    padding: 5rem 5rem 0rem 5rem;
+    height: 10rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+.UserIdContainer{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0rem 5rem;
+}
+
+.formalInfoContainer{
+
+    width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+
+     .ProfileimageContainer{
+         padding: 5rem 5rem 0rem 5rem;
+     
+         img{
+     
+             width: 12rem;
+             height: 12rem;
+             border-radius:50%
+         }
+     }
+}
+
+.utilDiv{
+
+    color: green;
+    font-family: 'Ubuntu',sans-serif;
+    font-size: 20px;
+    width: 100%;
+    height: 10rem;
+}
+
+.notFoundDiv{
+
+    color: red;
+    font-family: 'Ubuntu',sans-serif;
+    font-size: 20px;
+    width: 100%;
+    height: 10rem;
+    
+}
+.updateBtContainer{
+
+    width: 100%;
+    height: 7rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    .updateBt{
+    
+        width: 7rem;
+        height: 45px;
+        font-family:  'Ubuntu',sans-serif;
+        font-size: 20px;
+        background-color: #0E1E2E;
+        color:#7CDCA4;
+        border: none;
+        border-radius: 7px;
+    }
+
+}

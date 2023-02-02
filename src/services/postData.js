@@ -1,3 +1,6 @@
+
+import { data } from '../data/data';
+
 const {generateID} = require('./getFarmerId');
 
 
@@ -232,3 +235,37 @@ upin:InsuranceInfo.upin
 
 // }
 
+export const updateFarmerData = async(data,fetchedData) =>{
+
+  console.log(data)
+  console.log(fetchedData)
+
+const id = fetchedData.userId
+
+  const newData = {
+    ...fetchedData,
+    insuranceInfo:data.insuranceInfo,
+    bankInfo:data.bankInfo,
+    yeildInfo:data.yeildInfo,
+    farmInfo:data.farmInfo,
+  }
+
+// console.log(newData)
+
+  try{
+    
+    const response = await fetch(`http://localhost:7000/updatefarmer/${id}`,{
+     method:"PATCH",
+     headers:{
+       "Content-Type":"application/json"
+     },
+     body:JSON.stringify(newData)
+    })
+        const res = await response.json();
+        console.log('Here is the result',res)
+        return res;
+  }catch(err){
+    console.error('Could Not Update FarmerProfile!')
+  }
+       
+}
